@@ -1,0 +1,40 @@
+---
+import { Image } from 'astro:assets';
+import { directions } from '../data/site';
+import functionalImg from '../assets/functional.jpg';
+import strengthImg from '../assets/strength.jpg';
+import boxingImg from '../assets/boxing.jpg';
+import groupImg from '../assets/group.jpg';
+
+const photos = {
+  functional: { src: functionalImg, alt: 'Две девушки запрыгивают на деревянные тумбы' },
+  strength: { src: strengthImg, alt: 'Спортсмен берёт штангу с пола' },
+  boxing: { src: boxingImg, alt: 'Девушка в боксёрских перчатках бьёт по лапам тренера' },
+  group: { src: groupImg, alt: 'Женская группа тренируется с гантелями в светлом зале' },
+};
+---
+
+<section id="directions" class="mx-auto max-w-6xl px-4 py-20 sm:px-6">
+  <div class="flex flex-col justify-between gap-4 md:flex-row md:items-end">
+    <h2 class="font-display text-3xl font-bold uppercase sm:text-4xl">Направления</h2>
+    <p class="max-w-md text-muted">Можно совмещать: абонемент действует на все групповые тренировки.</p>
+  </div>
+
+  <ul class="mt-10 grid gap-5 sm:grid-cols-2">
+    {directions.map((d) => (
+      <li class="group relative isolate flex min-h-80 flex-col justify-end overflow-hidden rounded-3xl p-6 sm:p-8">
+        <Image
+          src={photos[d.key].src}
+          alt={photos[d.key].alt}
+          widths={[400, 600, 800]}
+          sizes="(min-width: 1152px) 560px, (min-width: 640px) 50vw, 100vw"
+          quality={60}
+          class="absolute inset-0 -z-20 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+        />
+        <div class="absolute inset-0 -z-10 bg-gradient-to-t from-bg via-bg/70 to-bg/0"></div>
+        <h3 class="font-display text-xl font-bold uppercase">{d.title}</h3>
+        <p class="mt-2 max-w-sm leading-relaxed text-ink/85">{d.text}</p>
+      </li>
+    ))}
+  </ul>
+</section>

@@ -1,0 +1,40 @@
+@import "tailwindcss";
+
+/* Цвета и шрифты проекта. Меняя их здесь, меняем весь сайт. */
+@theme {
+  /* Сами шрифты подключает Astro (astro.config.mjs), здесь - ссылки на них */
+  --font-display: var(--font-unbounded);
+  --font-sans: var(--font-manrope);
+
+  --color-bg: #0b0d0c;
+  --color-surface: #151917;
+  --color-raised: #1d2320;
+  --color-line: #2a312d;
+  --color-ink: #f2f5f3;
+  --color-muted: #a5afaa;
+  --color-primary: #c3f53c;
+  --color-primary-hover: #d4fa6a;
+  --color-on-primary: #0b0d0c;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+  color-scheme: dark;
+}
+
+body {
+  @apply bg-bg font-sans text-ink antialiased;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

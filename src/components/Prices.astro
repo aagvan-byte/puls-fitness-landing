@@ -1,0 +1,51 @@
+---
+import { plans } from '../data/site';
+---
+
+<section id="prices" class="border-y border-line bg-surface">
+  <div class="mx-auto max-w-6xl px-4 py-20 sm:px-6">
+    <h2 class="text-center font-display text-3xl font-bold uppercase sm:text-4xl">Абонементы</h2>
+    <p class="mx-auto mt-4 max-w-xl text-center text-muted">Без вступительных взносов и долгих контрактов. Оплата помесячно.</p>
+
+    <ul class="mt-12 grid items-start gap-6 md:grid-cols-3">
+      {plans.map((p) => (
+        <li
+          class:list={[
+            'relative flex flex-col rounded-3xl border p-6 sm:p-8',
+            p.popular ? 'border-primary bg-raised md:-mt-4 md:pb-12' : 'border-line bg-bg',
+          ]}
+        >
+          {p.popular && (
+            <span class="absolute -top-3 left-6 rounded-full bg-primary px-3 py-1 text-xs font-bold text-on-primary uppercase">
+              Выбирают чаще всего
+            </span>
+          )}
+          <h3 class="font-display text-lg font-bold uppercase">{p.name}</h3>
+          <p class="mt-4">
+            <span class="font-display text-3xl font-bold">{p.price}</span>
+            <span class="text-muted"> / {p.period}</span>
+          </p>
+          <ul class="mt-6 space-y-3">
+            {p.features.map((f) => (
+              <li class="flex gap-2.5">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" class="mt-0.5 shrink-0 text-primary" aria-hidden="true"><path d="M5 12l5 5 9-10" /></svg>
+                {f}
+              </li>
+            ))}
+          </ul>
+          <a
+            href="#booking"
+            class:list={[
+              'mt-8 rounded-full px-6 py-3 text-center font-bold transition-colors',
+              p.popular
+                ? 'bg-primary text-on-primary hover:bg-primary-hover'
+                : 'border border-line hover:border-primary hover:text-primary',
+            ]}
+          >
+            Начать с пробной
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

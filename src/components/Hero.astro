@@ -1,0 +1,58 @@
+---
+import { Image } from 'astro:assets';
+import { stats } from '../data/site';
+import heroImg from '../assets/hero.jpg';
+---
+
+<section class="relative isolate overflow-hidden">
+  <!-- Фото на весь первый экран, сверху затемнение, чтобы текст читался -->
+  <Image
+    src={heroImg}
+    alt=""
+    widths={[640, 1024, 1600]}
+    sizes="100vw"
+    quality={60}
+    loading="eager"
+    fetchpriority="high"
+    class="absolute inset-0 -z-20 h-full w-full object-cover object-[70%_center]"
+  />
+  <div class="absolute inset-0 -z-10 bg-gradient-to-r from-bg via-bg/85 to-bg/30"></div>
+  <div class="absolute inset-x-0 bottom-0 -z-10 h-32 bg-gradient-to-t from-bg to-transparent"></div>
+
+  <div class="mx-auto max-w-6xl px-4 pt-20 pb-16 sm:px-6 md:pt-28 md:pb-24">
+    <p class="inline-flex items-center gap-2 rounded-full border border-primary/40 bg-bg/60 px-4 py-1.5 text-sm font-semibold text-primary">
+      <span class="h-2 w-2 rounded-full bg-primary" aria-hidden="true"></span>
+      Первая тренировка - бесплатно
+    </p>
+    <h1 class="mt-6 max-w-3xl font-display text-4xl leading-[1.1] font-bold text-balance uppercase sm:text-5xl lg:text-6xl">
+      Тренируйся с теми, <span class="text-primary">кто не даст бросить</span>
+    </h1>
+    <p class="mt-6 max-w-xl text-lg leading-relaxed text-ink/85">
+      Фитнес-студия с маленькими группами до 8 человек. Тренер знает вашу цель, следит за техникой и отмечает прогресс.
+    </p>
+
+    <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+      <a
+        href="#booking"
+        class="rounded-full bg-primary px-7 py-3.5 text-center font-bold text-on-primary transition-colors hover:bg-primary-hover"
+      >
+        Записаться на пробную
+      </a>
+      <a
+        href="#schedule"
+        class="rounded-full border border-ink/25 bg-bg/40 px-7 py-3.5 text-center font-semibold transition-colors hover:border-primary hover:text-primary"
+      >
+        Смотреть расписание
+      </a>
+    </div>
+
+    <dl class="mt-14 grid max-w-xl grid-cols-3 gap-4 border-t border-ink/15 pt-6">
+      {stats.map((s) => (
+        <div class="flex flex-col-reverse justify-end">
+          <dt class="mt-1 text-sm leading-snug text-muted">{s.label}</dt>
+          <dd class="font-display text-2xl font-bold text-primary sm:text-3xl">{s.value}</dd>
+        </div>
+      ))}
+    </dl>
+  </div>
+</section>

@@ -1,0 +1,33 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import Directions from '../components/Directions.astro';
+import Schedule from '../components/Schedule.astro';
+import Personal from '../components/Personal.astro';
+import Prices from '../components/Prices.astro';
+import Reviews from '../components/Reviews.astro';
+import Faq from '../components/Faq.astro';
+import Booking from '../components/Booking.astro';
+import Contacts from '../components/Contacts.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout
+  title="Пульс - фитнес-студия в Москве: первая тренировка бесплатно"
+  description="Функциональный тренинг, силовые, бокс и группы для женщин. Маленькие группы до 8 человек, опытные тренеры. Запишитесь на бесплатную пробную тренировку."
+>
+  <Header />
+  <main id="main">
+    <Hero />
+    <Directions />
+    <Schedule />
+    <Personal />
+    <Prices />
+    <Reviews />
+    <Faq />
+    <Booking />
+    <Contacts />
+  </main>
+  <Footer />
+</Layout>
